@@ -2,7 +2,11 @@ import Parser from "rss-parser";
 
 const parser = new Parser();
 const main = async () => {
-  const url = "https://www.bonappetit.com/feed/recipes-rss-feed/rss";
+  const urls = [
+    "https://www.bonappetit.com/feed/recipes-rss-feed/rss",
+    "https://www.budgetbytes.com/category/recipes/feed/",
+    "https://www.reddit.com/r/recipes/.rss",
+  ];
 
   // clear the console for each update
   console.clear();
