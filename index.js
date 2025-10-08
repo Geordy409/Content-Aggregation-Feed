@@ -68,4 +68,36 @@ const main = async () => {
   // Display feedItemps
   print(feedItems);
 };
+
+// Function to aggregate and filter RSS feed items
+const aggregate = (responses, feedItems) => {
+  // Loop through each feed response in the 'responses' array
+  for (let { items } of responses) {
+    // Loop through each item in the current feed response
+    for (let { title, link } of items) {
+      // If the title contains the substring "veg" (case-insensitive)
+      if (title.toLowerCase().includes("veg")) {
+        // Add the item (title and link) to the 'feedItems' array
+        feedItems.push({ title, link });
+      }
+    }
+  }
+  // Return the filtered 'feedItems' array
+  return feedItems;
+};
+
+// Aggreagation function
+
+// Function to display the feed items in the console
+const print = (feedItems) => {
+  // Clear previous logs from the console
+  console.clear();
+
+  // Print the filtered feed items as a table
+  console.table(feedItems);
+
+  // Display the time of the last update in UTC format
+  console.log("Last updated ", new Date().toUTCString());
+};
+
 main();
