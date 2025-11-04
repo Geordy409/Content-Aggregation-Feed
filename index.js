@@ -1,5 +1,5 @@
 import Parser from "rss-parser";
-
+import promptModule from "prompt-sync";
 const parser = new Parser();
 
 /*
@@ -99,5 +99,12 @@ const print = (feedItems) => {
   // Display the time of the last update in UTC format
   console.log("Last updated ", new Date().toUTCString());
 };
+
+// ADD a new client or a new item
+
+const prompt = promptModule({ sigint: true });
+const res = prompt("Add item: ");
+const [title, link] = res.split(",");
+if (![title, link].includes(undefined)) customItems.push({ title, link });
 
 main();
